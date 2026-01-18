@@ -3,144 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clayton Wolf - Music & Services</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <title>Dive into the Infinite</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐺</text></svg>">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body, html { height: 100%; font-family: 'Rajdhani', sans-serif; background: #000; overflow-x: hidden; }
-        .bg-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
-        .bg-image { 
-            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('Clayton Wolf Red Light Image Upscaled.png');
-            height: 100%; background-position: center; background-repeat: no-repeat; background-size: cover;
-            animation: slowZoom 30s ease-in-out infinite alternate;
+        body { 
+            background: #000; color: #fff; font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden; min-height: 100vh;
         }
-        @keyframes slowZoom { 0% { transform: scale(1); } 100% { transform: scale(1.05); } }
-        .bokeh-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; pointer-events: none; }
-        .bokeh { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(220, 20, 60, 0.4), transparent); filter: blur(2px); animation: starFloat 15s infinite linear; }
+
+        #viewport {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -1; background-image: url('Clayton Wolf Red Light Image Upscaled.png');
+            background-size: cover; background-position: center;
+        }
         
-        /* Particles */
-        .bokeh:nth-child(1) { width: 3px; height: 3px; top: 5%; left: 10%; animation-duration: 20s; }
-        .bokeh:nth-child(2) { width: 2px; height: 2px; top: 15%; left: 25%; animation-duration: 18s; animation-delay: 1s; }
-        .bokeh:nth-child(3) { width: 4px; height: 4px; top: 25%; left: 40%; animation-duration: 22s; animation-delay: 2s; }
-        .bokeh:nth-child(4) { width: 3px; height: 3px; top: 35%; left: 55%; animation-duration: 19s; animation-delay: 3s; }
-        .bokeh:nth-child(5) { width: 2px; height: 2px; top: 45%; left: 70%; animation-duration: 21s; animation-delay: 4s; }
-        .bokeh:nth-child(6) { width: 3px; height: 3px; top: 55%; left: 85%; animation-duration: 17s; animation-delay: 5s; }
-        .bokeh:nth-child(7) { width: 4px; height: 4px; top: 65%; left: 15%; animation-duration: 23s; animation-delay: 6s; }
-        .bokeh:nth-child(8) { width: 2px; height: 2px; top: 75%; left: 30%; animation-duration: 20s; animation-delay: 7s; }
-        .bokeh:nth-child(9) { width: 3px; height: 3px; top: 85%; left: 45%; animation-duration: 18s; animation-delay: 8s; }
-        .bokeh:nth-child(10) { width: 2px; height: 2px; top: 10%; left: 60%; animation-duration: 19s; animation-delay: 9s; }
-        .bokeh:nth-child(11) { width: 4px; height: 4px; top: 20%; left: 75%; animation-duration: 22s; animation-delay: 10s; }
-        .bokeh:nth-child(12) { width: 3px; height: 3px; top: 30%; left: 5%; animation-duration: 21s; animation-delay: 11s; }
-        .bokeh:nth-child(13) { width: 2px; height: 2px; top: 40%; left: 20%; animation-duration: 17s; animation-delay: 12s; }
-        .bokeh:nth-child(14) { width: 3px; height: 3px; top: 50%; left: 35%; animation-duration: 20s; animation-delay: 13s; }
-        .bokeh:nth-child(15) { width: 4px; height: 4px; top: 60%; left: 50%; animation-duration: 19s; animation-delay: 14s; }
-        .bokeh:nth-child(16) { width: 2px; height: 2px; top: 70%; left: 65%; animation-duration: 18s; animation-delay: 15s; }
-        .bokeh:nth-child(17) { width: 3px; height: 3px; top: 80%; left: 80%; animation-duration: 23s; animation-delay: 16s; }
-        .bokeh:nth-child(18) { width: 2px; height: 2px; top: 12%; left: 8%; animation-duration: 21s; animation-delay: 17s; }
-        .bokeh:nth-child(19) { width: 4px; height: 4px; top: 22%; left: 92%; animation-duration: 22s; animation-delay: 18s; }
-        .bokeh:nth-child(20) { width: 3px; height: 3px; top: 32%; left: 12%; animation-duration: 20s; animation-delay: 19s; }
+        .radial-mask {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            backdrop-filter: blur(12px);
+            -webkit-mask-image: radial-gradient(circle, transparent 20%, black 80%);
+            mask-image: radial-gradient(circle, transparent 20%, black 80%);
+            z-index: 2;
+        }
 
-        @keyframes starFloat { 0% { transform: translate(0, 0) scale(1); opacity: 0; } 10% { opacity: 0.8; } 90% { opacity: 0.8; } 100% { transform: translate(-200px, 200px) scale(0.5); opacity: 0; } }
+        #bokeh-canvas { position: absolute; top: 0; left: 0; mix-blend-mode: screen; z-index: 3; }
+        .dark-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.55); z-index: 1; }
 
-        .content { position: relative; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 40px 20px; }
-        .profile { text-align: center; margin-bottom: 30px; }
-        .profile-img { width: 120px; height: 120px; border-radius: 50%; border: 3px solid rgba(220, 20, 60, 0.6); margin-bottom: 20px; box-shadow: 0 0 30px rgba(220, 20, 60, 0.4); object-fit: cover; }
-        .profile h1 { font-family: 'Orbitron', sans-serif; font-size: 2.5rem; color: #fff; margin-bottom: 5px; text-shadow: 0 0 20px rgba(220, 20, 60, 0.6); letter-spacing: 2px; }
-        .profile-handle { color: #aaa; font-size: 1.1rem; margin-bottom: 15px; }
-        .profile-bio { color: #ccc; font-size: 1rem; max-width: 500px; line-height: 1.6; margin: 0 auto; }
-        .page-nav { display: flex; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; justify-content: center; }
-        .nav-btn { padding: 10px 20px; background: rgba(0, 0, 0, 0.6); border: 2px solid rgba(255, 255, 255, 0.3); border-radius: 25px; color: white; font-family: 'Rajdhani', sans-serif; font-size: 1rem; font-weight: 500; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; }
-        .nav-btn:hover, .nav-btn.active { background: rgba(220, 20, 60, 0.4); border-color: rgba(220, 20, 60, 0.8); box-shadow: 0 0 15px rgba(220, 20, 60, 0.5); }
-        .links-container { width: 100%; max-width: 600px; }
-        .page-section { display: none; }
-        .page-section.active { display: block; }
-        .social-icons { display: flex; justify-content: center; gap: 15px; margin-bottom: 25px; flex-wrap: wrap; }
-        .social-icon { width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; }
-        .social-icon:hover { transform: translateY(-5px) scale(1.1); filter: drop-shadow(0 0 15px rgba(220, 20, 60, 0.6)); }
-        .link-btn { display: block; background: rgba(0, 0, 0, 0.6); border: 2px solid rgba(255, 255, 255, 0.3); border-radius: 15px; padding: 18px 25px; margin-bottom: 15px; color: white; text-decoration: none; font-size: 1.1rem; font-weight: 500; transition: all 0.3s ease; backdrop-filter: blur(10px); text-align: center; }
-        .link-btn:hover { background: rgba(220, 20, 60, 0.3); border-color: rgba(220, 20, 60, 0.8); box-shadow: 0 0 20px rgba(220, 20, 60, 0.4); transform: translateY(-2px); }
-        .link-btn.featured { background: rgba(220, 20, 60, 0.2); border-color: rgba(220, 20, 60, 0.6); }
-        .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: center; font-size: 0.85rem; color: #888; }
-        .footer a { color: #aaa; text-decoration: none; }
-        .den-special { background: rgba(220, 20, 60, 0.3) !important; border-color: #DC143C !important; font-weight: 700 !important; }
+        .content { 
+            position: relative; z-index: 10; width: 100%; max-width: 750px;
+            margin: 0 auto; display: flex; flex-direction: column; align-items: center; 
+            padding: 60px 20px; text-align: center;
+        }
+
+        .profile-img { 
+            width: 170px; height: 170px; border-radius: 50%; 
+            border: 2px solid #DC143C; margin-bottom: 25px; 
+            box-shadow: 0 0 40px rgba(220, 20, 60, 0.6); object-fit: cover; 
+        }
+
+        h1 { font-family: 'Orbitron', sans-serif; font-size: 3.5rem; text-shadow: 0 0 25px rgba(220, 20, 60, 0.8); margin-bottom: 5px; }
+        .handle { color: #aaa; margin-bottom: 40px; font-size: 1.2rem; letter-spacing: 4px; font-weight: 700; text-transform: uppercase; }
+
+        /* GIANT GLASS BUTTONS */
+        .nav { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-bottom: 50px; }
+
+        .nav-btn { 
+            position: relative; 
+            background: rgba(255, 255, 255, 0.08); 
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-radius: 50px; 
+            color: #fff; cursor: pointer; text-decoration: none; 
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            text-transform: uppercase; font-weight: 900; font-size: 1.1rem;
+            display: inline-flex; align-items: center; justify-content: center;
+            height: 75px; /* Forced Height */
+            padding: 0 45px; /* Horizontal Size */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            letter-spacing: 1px;
+        }
+
+        /* FLUSH RGB PERIMETER */
+        .rgb-trace { border: none !important; }
+        .rgb-trace::before {
+            content: ""; position: absolute; inset: 0; border-radius: 50px; 
+            padding: 3px; 
+            background: linear-gradient(90deg, #ff0000, #00ffff, #8a2be2, #ff0000);
+            background-size: 300% 300%;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: borderRotate 4s linear infinite;
+        }
+
+        @keyframes borderRotate { 0% { background-position: 0% 50%; } 100% { background-position: 300% 50%; } }
+        .nav-btn:hover { transform: scale(1.05); background: rgba(255, 255, 255, 0.15); box-shadow: 0 0 30px rgba(0, 255, 255, 0.3); }
+
+        /* SOCIAL BAR */
+        .social-bar { display: flex; justify-content: center; gap: 25px; margin-bottom: 45px; flex-wrap: wrap; }
+        .social-bar svg { width: 36px; height: 36px; fill: #fff; transition: 0.3s; filter: drop-shadow(0 0 8px rgba(255,255,255,0.3)); }
+        .social-bar a:hover svg { fill: #00FFFF; filter: drop-shadow(0 0 20px #00FFFF); transform: scale(1.2); }
+
+        /* PAGES */
+        .page { display: none; width: 100%; }
+        .page.active { display: block; animation: fadeIn 0.4s ease forwards; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .link-card { 
+            display: block; width: 100%; padding: 30px; margin-bottom: 20px; 
+            background: rgba(255,255,255,0.05); backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.1); 
+            border-radius: 25px; color: #fff; text-decoration: none; 
+            font-size: 1.4rem; font-weight: 700; transition: 0.3s;
+        }
+        .link-card:hover { border-color: #00FFFF; transform: translateY(-3px); }
+
+        .bio-text { 
+            background: rgba(0,0,0,0.8); backdrop-filter: blur(20px);
+            padding: 45px; border-radius: 35px; border: 1px solid rgba(220, 20, 60, 0.3); 
+            color: #fff; line-height: 1.8; text-align: left; font-size: 1.15rem;
+        }
+        .footer { margin-top: 80px; color: #666; font-size: 1rem; padding-bottom: 60px; font-weight: 700; }
     </style>
 </head>
 <body>
-    <div class="bg-container">
-        <div class="bg-image"></div>
-        <div class="bokeh-container">
-            <div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div>
-        </div>
+
+    <div id="viewport">
+        <div class="radial-mask"></div>
+        <canvas id="bokeh-canvas"></canvas>
+        <div class="dark-overlay"></div>
     </div>
 
     <div class="content">
-        <div class="profile">
-            <img src="Clayton Wolf Red Light Image Upscaled.png" alt="Clayton Wolf" class="profile-img">
-            <h1>CLAYTON WOLF</h1>
-            <p class="profile-handle">@claytonwolfmusic</p>
-            <p class="profile-bio">American DJ and producer from the Northeast Ozarks. I offer a variety of services at little or no cost to you. Connect with me below.</p>
+        <img src="Clayton Wolf Red Light Image Upscaled.png" class="profile-img">
+        <h1>CLAYTON WOLF</h1>
+        <p class="handle">@claytonwolfmusic</p>
+
+        <div class="nav">
+            <button class="nav-btn active" onclick="openPage('links')">Links</button>
+            <button class="nav-btn" onclick="openPage('music')">Music</button>
+            <button class="nav-btn" onclick="openPage('about')">About</button>
+            <a href="submit.html" class="nav-btn rgb-trace">THE DEN 🐺</a>
         </div>
 
-        <div class="page-nav">
-            <button class="nav-btn active" onclick="showPage('links')">Links</button>
-            <button class="nav-btn" onclick="showPage('music')">Music</button>
-            <button class="nav-btn" onclick="showPage('services')">Services</button>
-            <button class="nav-btn" onclick="showPage('about')">About</button>
-            <a href="submit.html" class="nav-btn den-special">THE DEN 📥</a>
-        </div>
-
-        <div class="links-container">
-            <div id="links" class="page-section active">
-                <div class="social-icons">
-                    <a href="https://www.youtube.com/@claytonwolfmusic" class="social-icon">
-                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M47.52 14.4c-.56-2.08-2.2-3.72-4.28-4.28C39.48 9 24 9 24 9s-15.48 0-19.24 1.12c-2.08.56-3.72 2.2-4.28 4.28C0 18.16 0 24 0 24s0 5.84.48 9.6c.56 2.08 2.2 3.72 4.28 4.28C8.52 39 24 39 24 39s15.48 0 19.24-1.12c2.08-.56 3.72-2.2 4.28-4.28.48-3.76.48-9.6.48-9.6s0-5.84-.48-9.6z" fill="#FF0000"/><path d="M19 31V17l13 7-13 7z" fill="#fff"/></svg>
-                    </a>
-                    <a href="https://www.tiktok.com/@clayton_wolf_music" class="social-icon">
-                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M34.3 3.5H27v29.3c0 3.5-2.8 6.3-6.3 6.3-3.5 0-6.3-2.8-6.3-6.3 0-3.4 2.8-6.2 6.2-6.2.7 0 1.3.1 1.9.3V19.8c-.6-.1-1.3-.1-1.9-.1-7.2 0-13 5.8-13 13s5.8 13 13 13c7.2 0 13-5.8 13-13V17.6c2.8 2 6.3 3.2 10.1 3.2v-7.1c-4.7 0-8.7-3.2-9.4-7.2z" fill="#FFFFFF"/></svg>
-                    </a>
-                    <a href="https://soundcloud.com/claytonwolfmusic" class="social-icon">
-                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 24.5v3.5h1V24.5H7zm2 1.5v2h1v-2H9zm2-1v4h1v-4h-1zm2 .5v3h1v-3h-1zm2-.5v4h1v-4h-1zm2 1v3h1v-3h-1zm2-2v5h1v-5h-1zm2 1.5v2.5h1V25h-1zm2-2.5v6h1v-6h-1zm2 2v4h1v-4h-1zm2-3v7h1v-7h-1zm2 1v6h1v-6h-1zm2 0v6h13c2.76 0 5-2.24 5-5s-2.24-5-5-5c-.34 0-.68.03-1 .09C38.28 14.16 34.88 11 30.75 11c-2.62 0-4.95 1.28-6.38 3.25-.64-.16-1.31-.25-2-.25-3.31 0-6 2.69-6 6 0 .35.03.69.08 1.03-.03-.01-.05-.03-.08-.03H33v6z" fill="#FF5500"/></svg>
-                    </a>
-                    <a href="https://www.facebook.com/clayton.wolf.126405" class="social-icon">
-                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="24" r="24" fill="#1877F2"/><path d="M26.5 25.5h4.4l.7-5h-5.1v-2.5c0-1.4.4-2.5 2.5-2.5h2.6V11c-.5-.1-2-.2-3.9-.2-3.9 0-6.5 2.4-6.5 6.8v3.9h-4.4v5h4.4V40h5.3V25.5z" fill="#fff"/></svg>
-                    </a>
-                    <a href="https://instagram.com/claytonwolfmusic" class="social-icon">
-                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><linearGradient id="ig-gradient" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#FED373"/><stop offset="25%" style="stop-color:#F15245"/><stop offset="50%" style="stop-color:#D92E7F"/><stop offset="75%" style="stop-color:#9B36B7"/><stop offset="100%" style="stop-color:#515ECF"/></linearGradient><path d="M24 4.32c6.41 0 7.17.03 9.7.14 2.34.11 3.61.5 4.46.83 1.12.43 1.92.95 2.76 1.8.85.84 1.37 1.64 1.8 2.76.33.85.72 2.12.83 4.46.11 2.53.14 3.29.14 9.7 0 6.4-.03 7.16-.14 9.68-.11 2.34-.5 3.61-.83 4.46-.43 1.12-.95 1.92-1.8 2.76-.84.85-1.64 1.37-2.76 1.8-.85.33-2.12.72-4.46.83-2.53.11-3.29.14-9.7.14-6.41 0-7.17-.03-9.7-.14-2.34-.11-3.61-.5-4.46-.83-1.12-.43-1.92-.95-2.76-1.8-.85-.84-1.37-1.64-1.8-2.76-.33-.85-.72-2.12-.83-4.46-.11-2.52-.14-3.28-.14-9.68 0-6.41.03-7.17.14-9.7.11-2.34.5-3.61.83-4.46.43-1.12.95-1.92 1.8-2.76.84-.85 1.64-1.37 2.76-1.8.85-.33 2.12-.72 4.46-.83 2.53-.11 3.29-.14 9.7-.14zM24 0c-6.52 0-7.34.03-9.9.14-2.55.12-4.3.53-5.82 1.12-1.58.61-2.92 1.43-4.25 2.76C2.7 5.35 1.88 6.69 1.27 8.27.68 9.79.27 11.54.15 14.1.03 16.66 0 17.48 0 24s.03 7.34.15 9.9c.12 2.56.53 4.31 1.12 5.83.61 1.58 1.43 2.92 2.76 4.25 1.33 1.33 2.67 2.15 4.25 2.76 1.52.59 3.27 1 5.82 1.12 2.56.12 3.38.15 9.9.15s7.34-.03 9.9-.15c2.55-.12 4.3-.53 5.82-1.12 1.58-.61 2.92-1.43 4.25-2.76 1.33-1.33 2.15-2.67 2.76-4.25.59-1.52 1-3.27 1.12-5.83.12-2.56.15-3.38.15-9.9s-.03-7.34-.15-9.9c-.12-2.56-.53-4.31-1.12-5.83-.61-1.58-1.43-2.92-2.76-4.25-1.33-1.33-2.67-2.15-4.25-2.76C38.2.68 36.45.27 33.9.15 31.34.03 30.52 0 24 0z" fill="url(#ig-gradient)"/><path d="M24 11.67c-6.8 0-12.33 5.53-12.33 12.33S17.2 36.33 24 36.33 36.33 30.8 36.33 24 30.8 11.67 24 11.67zm0 20.36c-4.41 0-8.03-3.62-8.03-8.03S19.59 15.97 24 15.97 32.03 19.59 32.03 24 28.41 32.03 24 32.03zM37.54 11.17c0 1.59-1.29 2.88-2.88 2.88-1.59 0-2.88-1.29-2.88-2.88 0-1.59 1.29-2.88 2.88-2.88 1.59 0 2.88 1.29 2.88 2.88z" fill="url(#ig-gradient)"/></svg>
-                    </a>
+        <div class="section-container">
+            <div id="links" class="page active">
+                <div class="social-bar">
+                    <a href="https://www.youtube.com/@claytonwolfmusic" target="_blank"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a2.816 2.816 0 0 0-1.978-1.978C19.781 3.668 12 3.668 12 3.668s-7.781 0-9.52.54c-.957.218-1.711.972-1.929 1.929C0 7.925 0 11.545 0 11.545s0 3.621.551 5.358c.218.957.972 1.711 1.929 1.929 1.739.54 9.52.54 9.52.54s7.781 0 9.52-.54a2.815 2.815 0 0 0 1.978-1.929C24 15.166 24 11.545 24 11.545s0-3.62-.502-5.359zM9.545 15.568V7.523L15.818 11.545l-6.273 4.023z"/></svg></a>
+                    <a href="https://www.tiktok.com/@clayton_wolf_music" target="_blank"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.03 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.98-.23-2.81.33-.85.51-1.44 1.43-1.58 2.41-.14 1.01.23 2.1 1.01 2.73.91.82 2.35.9 3.34.17.86-.55 1.39-1.49 1.4-2.5.02-3.56-.01-7.12.02-10.68z"/></svg></a>
+                    <a href="https://soundcloud.com/claytonwolfmusic" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 14.286h.571v3.428H1zm1.714-1.143h.571v4.571h-.571zm1.715-1.143h.571v5.714h-.571zm1.714 1.143h.571v4.571H6.143zm1.714-.571h.571v5.143h-.571zm1.715-1.714h.571v6.857h-.571zm1.714.571h.571v6.286h-.571zm1.714-1.143h.571v7.429h-.571zm1.715-1.143h.571v8.571h-.571zm1.714 0h.571v8.571h-.571zm1.714 0h.571v8.571h-.571zm1.715-1.714h.571v10.285H18zm1.714.571c.343-2.171 2.229-3.886 4.514-3.886.229 0 .4.057.629.114V17.714H19.714z"/></svg></a>
+                    <a href="https://instagram.com/claytonwolfmusic" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.981 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.981-6.98.058-1.28.072-1.689.072-4.948 0-3.259-.014-3.668-.072-4.948-.2-4.353-2.612-6.782-6.981-6.981C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+                    <a href="#" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.503 17.31c-.22.359-.688.471-1.047.25-2.859-1.747-6.458-2.141-10.7-1.171-.408.093-.815-.164-.908-.572-.093-.408.164-.815.572-.908 4.639-1.061 8.621-.607 11.828 1.352.359.22.471.688.255 1.049zm1.47-3.253c-.276.449-.863.593-1.312.317-3.271-2.01-8.258-2.593-12.127-1.417-.504.153-1.036-.135-1.189-.64-.153-.505.135-1.037.64-1.19 4.417-1.341 9.914-.687 13.67 1.621.449.276.593.863.318 1.309zm.126-3.411c-3.924-2.33-10.387-2.545-14.15-1.402-.6.182-1.238-.158-1.42-.758-.182-.6.158-1.238.758-1.42 4.314-1.311 11.45-1.054 15.98 1.631.54.32.716 1.018.396 1.558-.32.54-1.018.716-1.558.401z"/></svg></a>
                 </div>
-                <a href="submit.html" class="link-btn featured den-special">🎵 ENTER THE DEN (SUBMIT & QUEUE)</a>
-                <a href="#collaboration" class="link-btn">Collaboration Opportunities</a>
-                <a href="#booking" class="link-btn">Booking & Inquiries</a>
+                <a href="submit.html" class="link-card rgb-trace" style="font-weight:900; color: #00FFFF; text-align:center;">🎵 SUBMIT YOUR MUSIC 🎵</a>
+                <a href="#" class="link-card">Booking & Inquiries</a>
+                <a href="#" class="link-card">Collaboration Opportunities</a>
             </div>
 
-            <div id="music" class="page-section">
-                <h2 style="color: #fff; margin-bottom: 20px; text-align: center; font-size: 1.5rem;">Latest Releases</h2>
-                <a href="https://soundcloud.com/claytonwolfmusic/motion-original-mix" class="link-btn featured">Motion (Original Mix)</a>
-                <a href="https://soundcloud.com/claytonwolfmusic/the-anchor" class="link-btn">The Anchor</a>
-                <a href="https://soundcloud.com/claytonwolfmusic/fade-away" class="link-btn">Fade Away</a>
-                <a href="https://soundcloud.com/claytonwolfmusic/let-me-bleed-original-mix" class="link-btn">Let Me Bleed</a>
-                <a href="https://soundcloud.com/claytonwolfmusic/red-original-mix" class="link-btn">RED</a>
-                <a href="https://soundcloud.com/claytonwolfmusic" class="link-btn">View All Tracks →</a>
+            <div id="music" class="page">
+                <a href="https://soundcloud.com/claytonwolfmusic/motion-original-mix" class="link-card" target="_blank">Motion (Original Mix)</a>
+                <a href="https://soundcloud.com/claytonwolfmusic/the-anchor" class="link-card" target="_blank">The Anchor</a>
+                <a href="https://soundcloud.com/claytonwolfmusic/fade-away" class="link-card" target="_blank">Fade Away</a>
+                <a href="https://soundcloud.com/claytonwolfmusic/let-me-bleed-original-mix" class="link-card" target="_blank">Let Me Bleed</a>
+                <a href="https://soundcloud.com/claytonwolfmusic/red-original-mix" class="link-card" target="_blank">RED</a>
             </div>
 
-            <div id="services" class="page-section">
-                <h2 style="color: #fff; margin-bottom: 20px; text-align: center; font-size: 1.5rem;">What I Offer</h2>
-                <a href="#dj-services" class="link-btn">DJ Services</a>
-                <a href="#production" class="link-btn">Music Production</a>
-                <a href="#collaboration" class="link-btn">Artist Collaboration</a>
-                <a href="#mixing" class="link-btn">Mixing & Mastering</a>
-                <a href="#lessons" class="link-btn">DJ/Production Lessons</a>
-            </div>
-
-            <div id="about" class="page-section">
-                <h2 style="color: #fff; margin-bottom: 20px; text-align: center; font-size: 1.5rem;">About Clayton Wolf</h2>
-                <div style="background: rgba(0, 0, 0, 0.6); border: 2px solid rgba(255, 255, 255, 0.3); border-radius: 15px; padding: 25px; color: #ddd; line-height: 1.8; margin-bottom: 20px;">
-                    <p style="margin-bottom: 15px;">Clayton Wolf is an American DJ and producer from the Northeast Ozarks, crafting dubstep, trance, and melodic techno that blend atmosphere, emotion, and drive.</p>
-                    <p>Based in the Ozarks, he continues to develop his craft and share his sound with audiences around the world.</p>
+            <div id="about" class="page">
+                <div class="bio-text">
+                    <p style="margin-bottom: 20px;">Born in 1994, my life began as a ceaseless journey across the sprawling landscape of the United States. Without a fixed root, my formative years were defined by motion, adaptation, and the pervasive challenge of growing up with little.</p>
+                    <p style="margin-bottom: 20px;">By 13, armed with a pink Yamaha guitar, I first attempted to translate the noise in my head into music. I was captivated by intensity—the visceral power of Metal and the architecture of Electronic Music. By 16, the focus shifted to Trance, Deep House, and Melodic Techno.</p>
+                    <p style="margin-bottom: 20px;">The years have brought personal battles with mental health. These experiences became the source material for my art. My music is now an open conversation about these invisible struggles.</p>
+                    <p>My sound is a synthesis of my journey—a collision between dark intensity and uplifting hope. Join me as I continue to translate life’s turbulence into sound, turning pain into power, one track at a time.</p>
                 </div>
-                <a href="#contact" class="link-btn featured">Get In Touch</a>
             </div>
         </div>
 
@@ -150,12 +167,64 @@
     </div>
 
     <script>
-        function showPage(pageId) {
-            document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+        function openPage(id) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById(pageId).classList.add('active');
-            if(window.event && window.event.target) { window.event.target.classList.add('active'); }
+            document.getElementById(id).classList.add('active');
+            
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => {
+                if (btn.innerText.toLowerCase().includes(id)) {
+                    btn.classList.add('active');
+                }
+            });
         }
+
+        const canvas = document.getElementById('bokeh-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() { this.init(); }
+            init() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 25 + 10;
+                this.alpha = Math.random() * 0.3 + 0.1;
+                const colors = ['#FF0000', '#00FFFF', '#8A2BE2'];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                this.vx = (Math.random() - 0.5) * 0.15; 
+                this.vy = (Math.random() - 0.5) * 0.15; 
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = this.alpha;
+                ctx.shadowBlur = 40;
+                ctx.shadowColor = this.color;
+                ctx.fill();
+            }
+            update() {
+                this.x += this.vx; this.y += this.vy;
+                if (this.x > canvas.width + 50) this.x = -50;
+                if (this.x < -50) this.x = canvas.width + 50;
+                if (this.y > canvas.height + 50) this.y = -50;
+                if (this.y < -50) this.y = canvas.height + 50;
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if (particles.length < 50) { for(let i=0; i<50; i++) particles.push(new Particle()); }
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animate);
+        }
+        animate();
     </script>
 </body>
 </html>
