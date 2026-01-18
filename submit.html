@@ -26,89 +26,115 @@
         
         .radial-mask {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at center, 
-                rgba(0,0,0,0) 0%, 
-                rgba(220, 20, 60, 0.05) 25%, 
-                rgba(0, 0, 255, 0.08) 55%, 
-                rgba(0,0,0,1) 100%
-            );
-            backdrop-filter: blur(60px);
-            -webkit-mask-image: radial-gradient(circle at center, transparent 10%, black 80%);
-            mask-image: radial-gradient(circle at center, transparent 10%, black 80%);
-            z-index: 2;
+            background: radial-gradient(circle at center, rgba(0,0,0,0) 0%, rgba(220, 20, 60, 0.05) 25%, rgba(0, 0, 255, 0.08) 55%, rgba(0,0,0,1) 100%);
+            backdrop-filter: blur(60px); z-index: 2;
         }
 
         #bokeh-canvas { position: absolute; top: 0; left: 0; mix-blend-mode: screen; z-index: 3; filter: blur(25px); opacity: 0.85; }
         .dark-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1; }
 
         .content { 
-            position: relative; z-index: 10; width: 100%; max-width: 600px;
+            position: relative; z-index: 10; width: 100%; max-width: 650px;
             margin: 0 auto; display: flex; flex-direction: column; align-items: center; 
             padding: 40px 20px; text-align: center;
         }
 
         .back-btn { 
-            font-family: 'Rajdhani', sans-serif;
             background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px);
             border-radius: 50px; color: #fff; text-decoration: none; 
-            transition: 0.3s; text-transform: uppercase; font-weight: 700; font-size: 0.9rem;
+            transition: 0.3s; text-transform: uppercase; font-weight: 700; font-size: 0.8rem;
             display: inline-flex; align-items: center; justify-content: center;
-            height: 45px; padding: 0 25px; border: 1px solid rgba(255, 255, 255, 0.2);
+            height: 40px; padding: 0 20px; border: 1px solid rgba(255, 255, 255, 0.2);
             margin-bottom: 30px; letter-spacing: 2px; align-self: flex-start;
         }
-        .back-btn:hover { background: rgba(255, 255, 255, 0.15); border-color: #00FFFF; color: #00FFFF; }
+        .back-btn:hover { border-color: #dc143c; color: #dc143c; }
 
-        h1 { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 2.5rem; text-shadow: 0 0 25px rgba(220, 20, 60, 0.8); margin-bottom: 10px; letter-spacing: 2px; }
-        .sub-head { color: #aaa; margin-bottom: 40px; font-size: 1.1rem; letter-spacing: 4px; font-weight: 600; text-transform: uppercase; }
+        h1 { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 2.5rem; text-shadow: 0 0 25px rgba(220, 20, 60, 0.8); margin-bottom: 30px; }
 
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
-            padding: 35px;
-            width: 100%;
-            margin-bottom: 30px;
+        /* SUBMISSION FORM */
+        .form-panel {
+            background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px;
+            padding: 30px; width: 100%; margin-bottom: 30px;
         }
 
-        h2 { font-family: 'Orbitron', sans-serif; font-size: 1.2rem; color: #DC143C; margin-bottom: 25px; letter-spacing: 2px; }
-
-        input {
+        input[type="text"], input[type="url"] {
             width: 100%; padding: 15px; margin-bottom: 15px;
-            background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px; color: white; font-family: 'Rajdhani', sans-serif;
-            font-size: 1.1rem; transition: 0.3s;
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px; color: white; font-family: 'Rajdhani'; font-size: 1.1rem;
         }
-        input:focus { outline: none; border-color: #00FFFF; background: rgba(0,0,0,0.6); }
+        
+        .legal-row {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            margin-bottom: 20px; font-size: 0.9rem; color: #888;
+        }
+        .legal-link { color: #00FFFF; text-decoration: underline; cursor: pointer; }
 
         .submit-btn {
             background: #DC143C; color: white; border: none; padding: 18px;
-            width: 100%; border-radius: 12px; font-weight: 900; cursor: pointer;
-            font-family: 'Orbitron', sans-serif; letter-spacing: 2px;
-            transition: 0.4s; text-transform: uppercase;
-            box-shadow: 0 0 20px rgba(220, 20, 60, 0.4);
+            width: 100%; border-radius: 10px; font-weight: 900; cursor: pointer;
+            font-family: 'Orbitron'; letter-spacing: 2px; transition: 0.3s; text-transform: uppercase;
         }
-        .submit-btn:hover { background: #ff1a4d; transform: scale(1.02); box-shadow: 0 0 30px rgba(220, 20, 60, 0.6); }
+        .submit-btn:disabled { background: #222; color: #444; cursor: not-allowed; }
 
-        /* QUEUE STYLING */
-        #queue-list { text-align: left; }
-        .queue-item {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+        /* TIKTOK BUTTON - DIMMED GHOST STYLE */
+        .tiktok-btn {
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+            width: 80%; background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.4); text-decoration: none; padding: 10px;
+            border-radius: 8px; font-family: 'Orbitron'; font-weight: 700; font-size: 0.8rem;
+            letter-spacing: 1px; margin-bottom: 40px; transition: 0.4s;
         }
-        .queue-item:last-child { border-bottom: none; }
-        .queue-info strong { font-size: 1.1rem; color: #fff; }
-        .queue-info small { color: #888; font-weight: 500; font-size: 0.9rem; }
-        .status-badge { 
-            color: #DC143C; font-weight: 900; font-size: 0.8rem; 
-            letter-spacing: 1px; text-transform: uppercase;
-            background: rgba(220, 20, 60, 0.1); padding: 5px 10px; border-radius: 5px;
+        .tiktok-btn svg { width: 16px; height: 16px; fill: rgba(255, 255, 255, 0.4); transition: 0.4s; }
+        .tiktok-btn:hover { color: #fff; border-color: #fff; background: rgba(255,255,255,0.05); box-shadow: 2px 2px 0px #00f2ea, -2px -2px 0px #ff0050; }
+        .tiktok-btn:hover svg { fill: #fff; }
+
+        /* THE LIVE QUEUE - MAIN FOCUS */
+        .queue-box {
+            width: 100%; min-height: 600px; background: #000000;
+            border-radius: 15px; position: relative; padding: 40px 20px;
+            border: 2px solid #DC143C;
+            box-shadow: 0 0 25px rgba(220, 20, 60, 0.6), inset 0 0 40px rgba(220, 20, 60, 0.2);
+            margin-bottom: 50px; overflow: hidden;
+        }
+        .queue-title { font-family: 'Orbitron'; color: #fff; font-size: 1.4rem; margin-bottom: 30px; letter-spacing: 3px; display: flex; align-items: center; justify-content: center; gap: 12px; }
+        .live-dot { width: 10px; height: 10px; background: #DC143C; border-radius: 50%; box-shadow: 0 0 10px #DC143C; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+
+        #queue-list { display: flex; flex-direction: column; gap: 5px; text-align: left; }
+        .queue-item { display: flex; justify-content: space-between; align-items: center; padding: 18px; border-bottom: 1px solid rgba(220, 20, 60, 0.1); }
+        .track-info { display: flex; gap: 15px; align-items: flex-start; }
+        .track-num { font-family: 'Orbitron'; color: rgba(220, 20, 60, 0.6); font-size: 0.85rem; margin-top: 4px; }
+        .status-badge { color: #00FFFF; font-weight: 900; font-size: 0.7rem; border: 1px solid #00FFFF; padding: 4px 8px; border-radius: 4px; text-shadow: 0 0 5px #00FFFF; }
+
+        /* TERMS MODAL */
+        #legal-modal {
+            display: none; position: fixed; z-index: 1000; left: 0; top: 0;
+            width: 100%; height: 100%; background: rgba(0,0,0,0.9);
+            backdrop-filter: blur(10px); align-items: center; justify-content: center; padding: 20px;
+        }
+        .modal-content {
+            background: #111; border: 1px solid #DC143C; padding: 30px;
+            border-radius: 20px; max-width: 450px; text-align: left;
+        }
+        .close-modal {
+            background: #DC143C; color: white; border: none; padding: 12px;
+            border-radius: 8px; cursor: pointer; margin-top: 20px; width: 100%;
+            font-family: 'Orbitron'; font-weight: 700; text-transform: uppercase;
         }
 
-        .footer { font-family: 'Rajdhani', sans-serif; margin-top: 40px; color: #444; font-size: 1rem; padding-bottom: 40px; font-weight: 500; }
+        .footer { font-family: 'Rajdhani'; margin-top: 40px; color: #333; font-size: 0.9rem; padding-bottom: 40px; }
     </style>
 </head>
 <body>
+
+    <div id="legal-modal">
+        <div class="modal-content">
+            <h2 style="font-family:'Orbitron'; color:#DC143C; margin-bottom:15px; font-size:1.2rem;">SUBMISSION TERMS</h2>
+            <p style="color:#ddd; line-height:1.5; font-size:0.95rem;">By submitting, you grant Clayton Wolf the non-exclusive right to broadcast and react to your music on live platforms. You retain all ownership. You confirm you own the rights to this music and it contains no prohibited content.</p>
+            <button class="close-modal" onclick="closeLegal()">I AGREE</button>
+        </div>
+    </div>
 
     <div id="viewport">
         <div class="radial-mask"></div>
@@ -120,21 +146,31 @@
         <a href="index.html" class="back-btn">← Home</a>
         
         <h1>THE DEN</h1>
-        <p class="sub-head">Music Submissions</p>
 
-        <div class="glass-panel">
-            <h2>SUBMIT TRACK</h2>
+        <div class="form-panel">
+            <h2 style="font-family:'Orbitron'; color:#DC143C; margin-bottom:20px; font-size: 1.1rem; letter-spacing: 2px;">SEND YOUR TRACK</h2>
             <form id="den-form">
                 <input type="text" id="artist" placeholder="Artist Name" required>
                 <input type="text" id="track" placeholder="Track Title" required>
-                <input type="url" id="link" placeholder="SoundCloud / Drive Link" required>
-                <button type="submit" id="sub-btn" class="submit-btn">SEND TO THE DEN</button>
+                <input type="url" id="link" placeholder="Music Link (SoundCloud/Drive)" required>
+                
+                <div class="legal-row">
+                    <input type="checkbox" id="agree" onchange="toggleBtn()">
+                    <label>I accept the <span class="legal-link" onclick="openLegal()">Terms of Use</span></label>
+                </div>
+
+                <button type="submit" id="sub-btn" class="submit-btn" disabled>SEND TO THE DEN</button>
             </form>
         </div>
 
-        <div class="glass-panel">
-            <h2 style="color: #fff;">LIVE QUEUE</h2>
-            <div id="queue-list">Loading queue...</div>
+        <a href="https://www.tiktok.com/@clayton_wolf_music" target="_blank" class="tiktok-btn">
+            <svg viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14z"/></svg>
+            JOIN THE LIVE!
+        </a>
+
+        <div class="queue-box">
+            <div class="queue-title"><span class="live-dot"></span> LIVE QUEUE</div>
+            <div id="queue-list">Scanning the den...</div>
         </div>
 
         <div class="footer">
@@ -145,14 +181,14 @@
     <script>
         const API = 'https://sheetdb.io/api/v1/ey4aojfxo1oka';
 
-        // FORM LOGIC
+        function openLegal() { document.getElementById('legal-modal').style.display = 'flex'; }
+        function closeLegal() { document.getElementById('legal-modal').style.display = 'none'; }
+        function toggleBtn() { document.getElementById('sub-btn').disabled = !document.getElementById('agree').checked; }
+
         document.getElementById('den-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = document.getElementById('sub-btn');
-            const originalText = btn.innerText;
-            btn.innerText = "UPLOADING...";
-            btn.style.opacity = "0.7";
-            
+            btn.innerText = "TRANSMITTING...";
             try {
                 await fetch(API, {
                     method: 'POST',
@@ -168,16 +204,12 @@
                     })
                 });
                 document.getElementById('den-form').reset();
-            } catch (err) {
-                console.error("Submission failed", err);
-            }
-
-            btn.innerText = originalText;
-            btn.style.opacity = "1";
-            loadQueue();
+                toggleBtn();
+                btn.innerText = "SEND TO THE DEN";
+                loadQueue();
+            } catch(e) { btn.innerText = "ERROR - TRY AGAIN"; }
         });
 
-        // QUEUE LOGIC
         async function loadQueue() {
             try {
                 const res = await fetch(API);
@@ -185,58 +217,42 @@
                 const active = data.filter(i => i.Archive !== "TRUE" && i.Archive !== "true");
                 
                 document.getElementById('queue-list').innerHTML = active.length === 0 ? 
-                    "<div style='text-align:center; color:#666;'>The den is quiet...</div>" :
-                    active.reverse().map(i => `
+                    "<div style='color:#444; text-align:center; margin-top:50px;'>The den is quiet...</div>" :
+                    active.map((i, index) => `
                         <div class="queue-item">
-                            <div class="queue-info">
-                                <strong>${i['Artist Name']}</strong><br>
-                                <small>${i['Track Title']}</small>
+                            <div class="track-info">
+                                <span class="track-num">#${index + 1}</span>
+                                <div>
+                                    <strong style="font-size:1.1rem;">${i['Artist Name']}</strong><br>
+                                    <small style="color:#888; text-transform:uppercase; font-weight:600;">${i['Track Title']}</small>
+                                </div>
                             </div>
                             <div class="status-badge">${i['Status']}</div>
                         </div>
                     `).join('');
-            } catch (err) {
-                document.getElementById('queue-list').innerHTML = "Error loading queue.";
-            }
+            } catch (err) {}
         }
 
-        // BOKEH ANIMATION
         const canvas = document.getElementById('bokeh-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
         function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
         window.addEventListener('resize', resize); resize();
-
         class Particle {
             constructor() { this.init(); }
             init() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 45 + 15;
-                this.alpha = Math.random() * 0.15 + 0.05;
+                this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 45 + 15; this.alpha = Math.random() * 0.12 + 0.05;
                 const colors = ['#FF0000', '#00FFFF', '#8A2BE2'];
                 this.color = colors[Math.floor(Math.random() * colors.length)];
-                this.vx = (Math.random() - 0.5) * 0.6; 
-                this.vy = (Math.random() - 0.5) * 0.6; 
+                this.vx = (Math.random() - 0.5) * 0.4; this.vy = (Math.random() - 0.5) * 0.4; 
             }
-            draw() {
-                ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = this.color; ctx.globalAlpha = this.alpha; ctx.fill();
-            }
-            update() {
-                this.x += this.vx; this.y += this.vy;
-                if (this.x > canvas.width + 100) this.x = -100;
-                if (this.y > canvas.height + 100) this.y = -100;
-            }
+            draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fillStyle = this.color; ctx.globalAlpha = this.alpha; ctx.fill(); }
+            update() { this.x += this.vx; this.y += this.vy; if (this.x > canvas.width + 100) this.x = -100; if (this.y > canvas.height + 100) this.y = -100; }
         }
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            if (particles.length < 40) for(let i=0; i<40; i++) particles.push(new Particle());
-            particles.forEach(p => { p.update(); p.draw(); });
-            requestAnimationFrame(animate);
-        }
+        function animate() { ctx.clearRect(0, 0, canvas.width, canvas.height); if (particles.length < 40) for(let i=0; i<40; i++) particles.push(new Particle()); particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animate); }
         
-        setInterval(loadQueue, 30000);
+        setInterval(loadQueue, 10000);
         loadQueue();
         animate();
     </script>
