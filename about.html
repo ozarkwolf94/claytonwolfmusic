@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clayton Wolf | The Story</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐺</text></svg>">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: #000; color: #fff; 
+            font-family: 'Rajdhani', sans-serif; 
+            overflow-x: hidden; min-height: 100vh; 
+            line-height: 1.6;
+        }
+
+        #viewport {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -1; background-image: url('Clayton Wolf Red Light Image Upscaled.png');
+            background-size: cover; background-position: center;
+        }
+        
+        .radial-mask {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, 
+                rgba(0,0,0,0) 0%, 
+                rgba(220, 20, 60, 0.05) 25%, 
+                rgba(0, 0, 255, 0.08) 55%, 
+                rgba(0,0,0,1) 100%
+            );
+            backdrop-filter: blur(60px);
+            -webkit-mask-image: radial-gradient(circle at center, transparent 10%, black 80%);
+            mask-image: radial-gradient(circle at center, transparent 10%, black 80%);
+            z-index: 2;
+        }
+
+        #bokeh-canvas { position: absolute; top: 0; left: 0; mix-blend-mode: screen; z-index: 3; filter: blur(25px); opacity: 0.8; }
+        .dark-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1; }
+
+        .content { 
+            position: relative; z-index: 10; width: 100%; max-width: 800px;
+            margin: 0 auto; display: flex; flex-direction: column; align-items: center; 
+            padding: 40px 20px;
+        }
+
+        .back-btn { 
+            font-family: 'Rajdhani', sans-serif;
+            background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px);
+            border-radius: 50px; color: #fff; text-decoration: none; 
+            transition: 0.3s; text-transform: uppercase; font-weight: 700; font-size: 0.9rem;
+            display: inline-flex; align-items: center; justify-content: center;
+            height: 45px; padding: 0 25px; border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 40px; letter-spacing: 2px; align-self: flex-start;
+        }
+        .back-btn:hover { background: rgba(255, 255, 255, 0.15); border-color: #00FFFF; color: #00FFFF; }
+
+        h1 { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 3rem; text-shadow: 0 0 25px rgba(220, 20, 60, 0.8); margin-bottom: 40px; letter-spacing: 2px; text-align: center; width: 100%; }
+
+        .story-card {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 50px;
+            text-align: left;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .story-text p {
+            font-size: 1.25rem;
+            margin-bottom: 25px;
+            color: #ddd;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .highlight {
+            color: #fff;
+            font-weight: 700;
+            border-left: 3px solid #DC143C;
+            padding-left: 20px;
+            margin: 40px 0;
+            font-style: italic;
+            font-size: 1.4rem;
+        }
+
+        .mission-box {
+            margin-top: 30px;
+            padding: 30px;
+            background: rgba(220, 20, 60, 0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(220, 20, 60, 0.3);
+            text-align: center;
+        }
+
+        .mission-box h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            color: #DC143C;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .footer { font-family: 'Rajdhani', sans-serif; margin-top: 60px; color: #444; font-size: 1rem; padding-bottom: 40px; font-weight: 500; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <div id="viewport">
+        <div class="radial-mask"></div>
+        <canvas id="bokeh-canvas"></canvas>
+        <div class="dark-overlay"></div>
+    </div>
+
+    <div class="content">
+        <a href="index.html" class="back-btn">← Home</a>
+        
+        <h1>THE FULL STORY</h1>
+
+        <div class="story-card">
+            <div class="story-text">
+                <p>Born in 1994, my life began as a ceaseless journey across the sprawling landscape of the United States. Without a fixed root, my formative years were defined by motion, adaptation, and the pervasive challenge of growing up with little. This early exposure to the grit and diverse rhythms of American life, coupled with the necessity of finding solace where little existed, forged a resilience that now fuels every beat I create.</p>
+                
+                <p>My true path began not in comfort, but in raw, unapologetic sound. By the age of 13, armed with a slightly rebellious pink Yamaha guitar, I first attempted to translate the noise in my head into music. I was captivated by intensity—the visceral power of Metal and the intricate, rhythmic architecture of Electronic Music.</p>
+
+                <div class="highlight">
+                    "My music is now an open conversation about these invisible struggles. Every track is imbued with an understanding of what it means to feel isolated, yet also hopeful."
+                </div>
+
+                <p>By 16, the focus shifted. I was drawn into the immersive worlds of Trance, the deep, rolling energy of Deep House, the cinematic scope of Melodic Techno, and the explosive dynamics of early Dubstep. These genres offered an escape and a complex, melodic structure that allowed me to build worlds far removed from the struggles of my reality.</p>
+                
+                <p>The years have brought not just creative exploration, but a profound series of personal battles. Like many, I have faced significant difficulties and hardships, particularly navigating the complex terrain of mental health. These experiences—the darkness, the struggle for equilibrium, and the slow, difficult path toward light—became the most important source material for my art.</p>
+
+                <p>My sound is a synthesis of my journey—a harmonious collision between dark, reflective intensity and uplifting melodic hope. I craft electronic music that perfectly blends melody with dark, atmospheric vibes. The resulting music is harmonious, yet complex, designed to be both a cathartic release on the dance floor and a contemplative soundtrack for personal introspection.</p>
+
+                <div class="mission-box">
+                    <h2>THE MISSION</h2>
+                    <p>I am a passionate daily advocate for men’s mental health, driven by the belief that open expression and shared vulnerability are essential to healing. Join me as I continue to translate life’s turbulence into sound, turning pain into power, one track at a time.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2026 Clayton Wolf - WolfPro Services LLC.</p>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('bokeh-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resize); resize();
+
+        class Particle {
+            constructor() { this.init(); }
+            init() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 45 + 15;
+                this.alpha = Math.random() * 0.15 + 0.05;
+                const colors = ['#FF0000', '#00FFFF', '#8A2BE2'];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                this.vx = (Math.random() - 0.5) * 0.5; 
+                this.vy = (Math.random() - 0.5) * 0.5; 
+            }
+            draw() {
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color; ctx.globalAlpha = this.alpha; ctx.fill();
+            }
+            update() {
+                this.x += this.vx; this.y += this.vy;
+                if (this.x > canvas.width + 100) this.x = -100;
+                if (this.y > canvas.height + 100) this.y = -100;
+            }
+        }
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if (particles.length < 40) for(let i=0; i<40; i++) particles.push(new Particle());
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
+</body>
+</html>

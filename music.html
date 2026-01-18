@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clayton Wolf | Music</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐺</text></svg>">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: #000; color: #fff; 
+            font-family: 'Rajdhani', sans-serif; 
+            overflow-x: hidden; min-height: 100vh; 
+        }
+
+        #viewport {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -1; background-image: url('Clayton Wolf Red Light Image Upscaled.png');
+            background-size: cover; background-position: center;
+        }
+        
+        .radial-mask {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, 
+                rgba(0,0,0,0) 0%, 
+                rgba(220, 20, 60, 0.05) 25%, 
+                rgba(0, 0, 255, 0.08) 55%, 
+                rgba(0,0,0,1) 100%
+            );
+            backdrop-filter: blur(60px);
+            -webkit-mask-image: radial-gradient(circle at center, transparent 10%, black 80%);
+            mask-image: radial-gradient(circle at center, transparent 10%, black 80%);
+            z-index: 2;
+        }
+
+        #bokeh-canvas { position: absolute; top: 0; left: 0; mix-blend-mode: screen; z-index: 3; filter: blur(25px); opacity: 0.85; }
+        .dark-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1; }
+
+        .content { 
+            position: relative; z-index: 10; width: 100%; max-width: 900px;
+            margin: 0 auto; display: flex; flex-direction: column; align-items: center; 
+            padding: 40px 20px; text-align: center;
+        }
+
+        h1 { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 3rem; text-shadow: 0 0 25px rgba(220, 20, 60, 0.8); margin-bottom: 30px; letter-spacing: 2px; }
+
+        .back-btn { 
+            font-family: 'Rajdhani', sans-serif;
+            background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px);
+            border-radius: 50px; color: #fff; text-decoration: none; 
+            transition: 0.3s; text-transform: uppercase; font-weight: 700; font-size: 0.9rem;
+            display: inline-flex; align-items: center; justify-content: center;
+            height: 45px; padding: 0 25px; border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 40px; letter-spacing: 2px; align-self: flex-start;
+        }
+        .back-btn:hover { background: rgba(255, 255, 255, 0.15); border-color: #00FFFF; color: #00FFFF; }
+
+        /* MUSIC GRID */
+        .music-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .track-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 20px;
+            text-decoration: none;
+            color: #fff;
+            transition: 0.4s;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .track-card:hover {
+            transform: translateY(-5px);
+            border-color: #DC143C;
+            box-shadow: 0 10px 30px rgba(220, 20, 60, 0.3);
+        }
+
+        .track-art {
+            width: 100%;
+            aspect-ratio: 1/1;
+            background: #111;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .track-info h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .track-info p {
+            font-size: 0.9rem;
+            color: #aaa;
+            font-weight: 500;
+        }
+
+        .platform-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: auto;
+        }
+
+        .platform-icons svg {
+            width: 20px;
+            height: 20px;
+            fill: rgba(255, 255, 255, 0.6);
+            transition: 0.3s;
+        }
+
+        .track-card:hover .platform-icons svg {
+            fill: #fff;
+        }
+
+        .footer { font-family: 'Rajdhani', sans-serif; margin-top: 60px; color: #444; font-size: 1rem; padding-bottom: 40px; font-weight: 500; }
+    </style>
+</head>
+<body>
+
+    <div id="viewport">
+        <div class="radial-mask"></div>
+        <canvas id="bokeh-canvas"></canvas>
+        <div class="dark-overlay"></div>
+    </div>
+
+    <div class="content">
+        <a href="index.html" class="back-btn">← Back to Home</a>
+        
+        <h1>LATEST RELEASES</h1>
+
+        <div class="music-grid">
+            <a href="https://soundcloud.com/claytonwolfmusic/motion-original-mix" target="_blank" class="track-card">
+                <div class="track-art">🌊</div>
+                <div class="track-info">
+                    <h3>MOTION</h3>
+                    <p>Original Mix</p>
+                </div>
+                <div class="platform-icons">
+                    <svg viewBox="0 0 24 24"><path d="M1 14.286h.571v3.428H1zm1.714-1.143h.571v4.571h-.571zm1.715-1.143h.571v5.714h-.571zm1.714 1.143h.571v4.571H6.143zm1.714-.571h.571v5.143h-.571zm1.715-1.714h.571v6.857h-.571zm1.714.571h.571v6.286h-.571zm1.714-1.143h.571v7.429h-.571zm1.715-1.143h.571v8.571h-.571zm1.714 0h.571v8.571h-.571zm1.714 0h.571v8.571h-.571zm1.715-1.714h.571v10.285H18zm1.714.571c.343-2.171 2.229-3.886 4.514-3.886.229 0 .4.057.629.114V17.714H19.714z"/></svg>
+                </div>
+            </a>
+
+            <a href="https://soundcloud.com/claytonwolfmusic/the-anchor" target="_blank" class="track-card">
+                <div class="track-art">⚓</div>
+                <div class="track-info">
+                    <h3>THE ANCHOR</h3>
+                    <p>Original Mix</p>
+                </div>
+                <div class="platform-icons">
+                    <svg viewBox="0 0 24 24"><path d="M1 14.286h.571v3.428H1zm1.714-1.143h.571v4.571h-.571zm1.715-1.143h.571v5.714h-.571zm1.714 1.143h.571v4.571H6.143zm1.714-.571h.571v5.143h-.571zm1.715-1.714h.571v6.857h-.571zm1.714.571h.571v6.286h-.571zm1.714-1.143h.571v7.429h-.571zm1.715-1.143h.571v8.571h-.571zm1.714 0h.571v8.571h-.571zm1.714 0h.571v8.571h-.571zm1.715-1.714h.571v10.285H18zm1.714.571c.343-2.171 2.229-3.886 4.514-3.886.229 0 .4.057.629.114V17.714H19.714z"/></svg>
+                </div>
+            </a>
+            
+            <div class="track-card">
+                <div class="track-art" style="font-size: 1.5rem; color: #444;">COMING SOON</div>
+                <div class="track-info">
+                    <h3 style="color: #444;">NEW ID</h3>
+                    <p>Unreleased</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2026 Clayton Wolf - WolfPro Services LLC.</p>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('bokeh-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resize); resize();
+
+        class Particle {
+            constructor() { this.init(); }
+            init() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 45 + 15;
+                this.alpha = Math.random() * 0.2 + 0.1;
+                const colors = ['#FF0000', '#00FFFF', '#8A2BE2'];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                this.vx = (Math.random() - 0.5) * 0.8; 
+                this.vy = (Math.random() - 0.5) * 0.8; 
+            }
+            draw() {
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color; ctx.globalAlpha = this.alpha; ctx.fill();
+            }
+            update() {
+                this.x += this.vx; this.y += this.vy;
+                if (this.x > canvas.width + 100) this.x = -100;
+                if (this.y > canvas.height + 100) this.y = -100;
+            }
+        }
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if (particles.length < 50) for(let i=0; i<50; i++) particles.push(new Particle());
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
+</body>
+</html>
