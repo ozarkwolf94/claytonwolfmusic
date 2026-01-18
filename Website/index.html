@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clayton Wolf - Music & Services</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { height: 100%; font-family: 'Rajdhani', sans-serif; background: #000; overflow-x: hidden; }
+        .bg-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
+        .bg-image { 
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('Clayton Wolf Red Light Image Upscaled.png');
+            height: 100%; background-position: center; background-repeat: no-repeat; background-size: cover;
+            animation: slowZoom 30s ease-in-out infinite alternate;
+        }
+        @keyframes slowZoom { 0% { transform: scale(1); } 100% { transform: scale(1.05); } }
+        .bokeh-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; pointer-events: none; }
+        .bokeh { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(220, 20, 60, 0.4), transparent); filter: blur(2px); animation: starFloat 15s infinite linear; }
+        
+        /* Particles */
+        .bokeh:nth-child(1) { width: 3px; height: 3px; top: 5%; left: 10%; animation-duration: 20s; }
+        .bokeh:nth-child(2) { width: 2px; height: 2px; top: 15%; left: 25%; animation-duration: 18s; animation-delay: 1s; }
+        .bokeh:nth-child(3) { width: 4px; height: 4px; top: 25%; left: 40%; animation-duration: 22s; animation-delay: 2s; }
+        .bokeh:nth-child(4) { width: 3px; height: 3px; top: 35%; left: 55%; animation-duration: 19s; animation-delay: 3s; }
+        .bokeh:nth-child(5) { width: 2px; height: 2px; top: 45%; left: 70%; animation-duration: 21s; animation-delay: 4s; }
+        .bokeh:nth-child(6) { width: 3px; height: 3px; top: 55%; left: 85%; animation-duration: 17s; animation-delay: 5s; }
+        .bokeh:nth-child(7) { width: 4px; height: 4px; top: 65%; left: 15%; animation-duration: 23s; animation-delay: 6s; }
+        .bokeh:nth-child(8) { width: 2px; height: 2px; top: 75%; left: 30%; animation-duration: 20s; animation-delay: 7s; }
+        .bokeh:nth-child(9) { width: 3px; height: 3px; top: 85%; left: 45%; animation-duration: 18s; animation-delay: 8s; }
+        .bokeh:nth-child(10) { width: 2px; height: 2px; top: 10%; left: 60%; animation-duration: 19s; animation-delay: 9s; }
+        .bokeh:nth-child(11) { width: 4px; height: 4px; top: 20%; left: 75%; animation-duration: 22s; animation-delay: 10s; }
+        .bokeh:nth-child(12) { width: 3px; height: 3px; top: 30%; left: 5%; animation-duration: 21s; animation-delay: 11s; }
+        .bokeh:nth-child(13) { width: 2px; height: 2px; top: 40%; left: 20%; animation-duration: 17s; animation-delay: 12s; }
+        .bokeh:nth-child(14) { width: 3px; height: 3px; top: 50%; left: 35%; animation-duration: 20s; animation-delay: 13s; }
+        .bokeh:nth-child(15) { width: 4px; height: 4px; top: 60%; left: 50%; animation-duration: 19s; animation-delay: 14s; }
+        .bokeh:nth-child(16) { width: 2px; height: 2px; top: 70%; left: 65%; animation-duration: 18s; animation-delay: 15s; }
+        .bokeh:nth-child(17) { width: 3px; height: 3px; top: 80%; left: 80%; animation-duration: 23s; animation-delay: 16s; }
+        .bokeh:nth-child(18) { width: 2px; height: 2px; top: 12%; left: 8%; animation-duration: 21s; animation-delay: 17s; }
+        .bokeh:nth-child(19) { width: 4px; height: 4px; top: 22%; left: 92%; animation-duration: 22s; animation-delay: 18s; }
+        .bokeh:nth-child(20) { width: 3px; height: 3px; top: 32%; left: 12%; animation-duration: 20s; animation-delay: 19s; }
+
+        @keyframes starFloat { 0% { transform: translate(0, 0) scale(1); opacity: 0; } 10% { opacity: 0.8; } 90% { opacity: 0.8; } 100% { transform: translate(-200px, 200px) scale(0.5); opacity: 0; } }
+
+        .content { position: relative; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 40px 20px; }
+        .profile { text-align: center; margin-bottom: 30px; }
+        .profile-img { width: 120px; height: 120px; border-radius: 50%; border: 3px solid rgba(220, 20, 60, 0.6); margin-bottom: 20px; box-shadow: 0 0 30px rgba(220, 20, 60, 0.4); object-fit: cover; }
+        .profile h1 { font-family: 'Orbitron', sans-serif; font-size: 2.5rem; color: #fff; margin-bottom: 5px; text-shadow: 0 0 20px rgba(220, 20, 60, 0.6); letter-spacing: 2px; }
+        .profile-handle { color: #aaa; font-size: 1.1rem; margin-bottom: 15px; }
+        .profile-bio { color: #ccc; font-size: 1rem; max-width: 500px; line-height: 1.6; margin: 0 auto; }
+        .page-nav { display: flex; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; justify-content: center; }
+        .nav-btn { padding: 10px 20px; background: rgba(0, 0, 0, 0.6); border: 2px solid rgba(255, 255, 255, 0.3); border-radius: 25px; color: white; font-family: 'Rajdhani', sans-serif; font-size: 1rem; font-weight: 500; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; }
+        .nav-btn:hover, .nav-btn.active { background: rgba(220, 20, 60, 0.4); border-color: rgba(220, 20, 60, 0.8); box-shadow: 0 0 15px rgba(220, 20, 60, 0.5); }
+        .links-container { width: 100%; max-width: 600px; }
+        .page-section { display: none; }
+        .page-section.active { display: block; }
+        .social-icons { display: flex; justify-content: center; gap: 15px; margin-bottom: 25px; flex-wrap: wrap; }
+        .social-icon { width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; }
+        .social-icon:hover { transform: translateY(-5px) scale(1.1); filter: drop-shadow(0 0 15px rgba(220, 20, 60, 0.6)); }
+        .link-btn { display: block; background: rgba(0, 0, 0, 0.6); border: 2px solid rgba(255, 255, 255, 0.3); border-radius: 15px; padding: 18px 25px; margin-bottom: 15px; color: white; text-decoration: none; font-size: 1.1rem; font-weight: 500; transition: all 0.3s ease; backdrop-filter: blur(10px); text-align: center; }
+        .link-btn:hover { background: rgba(220, 20, 60, 0.3); border-color: rgba(220, 20, 60, 0.8); box-shadow: 0 0 20px rgba(220, 20, 60, 0.4); transform: translateY(-2px); }
+        .link-btn.featured { background: rgba(220, 20, 60, 0.2); border-color: rgba(220, 20, 60, 0.6); }
+        .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: center; font-size: 0.85rem; color: #888; }
+        .footer a { color: #aaa; text-decoration: none; }
+        .den-special { background: rgba(220, 20, 60, 0.3) !important; border-color: #DC143C !important; font-weight: 700 !important; }
+    </style>
+</head>
+<body>
+    <div class="bg-container">
+        <div class="bg-image"></div>
+        <div class="bokeh-container">
+            <div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="profile">
+            <img src="Clayton Wolf Red Light Image Upscaled.png" alt="Clayton Wolf" class="profile-img">
+            <h1>CLAYTON WOLF</h1>
+            <p class="profile-handle">@claytonwolfmusic</p>
+            <p class="profile-bio">American DJ and producer from the Northeast Ozarks. I offer a variety of services at little or no cost to you. Connect with me below.</p>
+        </div>
+
+        <div class="page-nav">
+            <button class="nav-btn active" onclick="showPage('links')">Links</button>
+            <button class="nav-btn" onclick="showPage('music')">Music</button>
+            <button class="nav-btn" onclick="showPage('services')">Services</button>
+            <button class="nav-btn" onclick="showPage('about')">About</button>
+            <a href="submit.html" class="nav-btn den-special">THE DEN 📥</a>
+        </div>
+
+        <div class="links-container">
+            <div id="links" class="page-section active">
+                <div class="social-icons">
+                    <a href="https://www.youtube.com/@claytonwolfmusic" class="social-icon">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M47.52 14.4c-.56-2.08-2.2-3.72-4.28-4.28C39.48 9 24 9 24 9s-15.48 0-19.24 1.12c-2.08.56-3.72 2.2-4.28 4.28C0 18.16 0 24 0 24s0 5.84.48 9.6c.56 2.08 2.2 3.72 4.28 4.28C8.52 39 24 39 24 39s15.48 0 19.24-1.12c2.08-.56 3.72-2.2 4.28-4.28.48-3.76.48-9.6.48-9.6s0-5.84-.48-9.6z" fill="#FF0000"/><path d="M19 31V17l13 7-13 7z" fill="#fff"/></svg>
+                    </a>
+                    <a href="https://www.tiktok.com/@clayton_wolf_music" class="social-icon">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M34.3 3.5H27v29.3c0 3.5-2.8 6.3-6.3 6.3-3.5 0-6.3-2.8-6.3-6.3 0-3.4 2.8-6.2 6.2-6.2.7 0 1.3.1 1.9.3V19.8c-.6-.1-1.3-.1-1.9-.1-7.2 0-13 5.8-13 13s5.8 13 13 13c7.2 0 13-5.8 13-13V17.6c2.8 2 6.3 3.2 10.1 3.2v-7.1c-4.7 0-8.7-3.2-9.4-7.2z" fill="#FFFFFF"/></svg>
+                    </a>
+                    <a href="https://soundcloud.com/claytonwolfmusic" class="social-icon">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 24.5v3.5h1V24.5H7zm2 1.5v2h1v-2H9zm2-1v4h1v-4h-1zm2 .5v3h1v-3h-1zm2-.5v4h1v-4h-1zm2 1v3h1v-3h-1zm2-2v5h1v-5h-1zm2 1.5v2.5h1V25h-1zm2-2.5v6h1v-6h-1zm2 2v4h1v-4h-1zm2-3v7h1v-7h-1zm2 1v6h1v-6h-1zm2 0v6h13c2.76 0 5-2.24 5-5s-2.24-5-5-5c-.34 0-.68.03-1 .09C38.28 14.16 34.88 11 30.75 11c-2.62 0-4.95 1.28-6.38 3.25-.64-.16-1.31-.25-2-.25-3.31 0-6 2.69-6 6 0 .35.03.69.08 1.03-.03-.01-.05-.03-.08-.03H33v6z" fill="#FF5500"/></svg>
+                    </a>
+                    <a href="https://www.facebook.com/clayton.wolf.126405" class="social-icon">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="24" r="24" fill="#1877F2"/><path d="M26.5 25.5h4.4l.7-5h-5.1v-2.5c0-1.4.4-2.5 2.5-2.5h2.6V11c-.5-.1-2-.2-3.9-.2-3.9 0-6.5 2.4-6.5 6.8v3.9h-4.4v5h4.4V40h5.3V25.5z" fill="#fff"/></svg>
+                    </a>
+                    <a href="https://instagram.com/claytonwolfmusic" class="social-icon">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><linearGradient id="ig-gradient" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#FED373"/><stop offset="25%" style="stop-color:#F15245"/><stop offset="50%" style="stop-color:#D92E7F"/><stop offset="75%" style="stop-color:#9B36B7"/><stop offset="100%" style="stop-color:#515ECF"/></linearGradient><path d="M24 4.32c6.41 0 7.17.03 9.7.14 2.34.11 3.61.5 4.46.83 1.12.43 1.92.95 2.76 1.8.85.84 1.37 1.64 1.8 2.76.33.85.72 2.12.83 4.46.11 2.53.14 3.29.14 9.7 0 6.4-.03 7.16-.14 9.68-.11 2.34-.5 3.61-.83 4.46-.43 1.12-.95 1.92-1.8 2.76-.84.85-1.64 1.37-2.76 1.8-.85.33-2.12.72-4.46.83-2.53.11-3.29.14-9.7.14-6.41 0-7.17-.03-9.7-.14-2.34-.11-3.61-.5-4.46-.83-1.12-.43-1.92-.95-2.76-1.8-.85-.84-1.37-1.64-1.8-2.76-.33-.85-.72-2.12-.83-4.46-.11-2.52-.14-3.28-.14-9.68 0-6.41.03-7.17.14-9.7.11-2.34.5-3.61.83-4.46.43-1.12.95-1.92 1.8-2.76.84-.85 1.64-1.37 2.76-1.8.85-.33 2.12-.72 4.46-.83 2.53-.11 3.29-.14 9.7-.14zM24 0c-6.52 0-7.34.03-9.9.14-2.55.12-4.3.53-5.82 1.12-1.58.61-2.92 1.43-4.25 2.76C2.7 5.35 1.88 6.69 1.27 8.27.68 9.79.27 11.54.15 14.1.03 16.66 0 17.48 0 24s.03 7.34.15 9.9c.12 2.56.53 4.31 1.12 5.83.61 1.58 1.43 2.92 2.76 4.25 1.33 1.33 2.67 2.15 4.25 2.76 1.52.59 3.27 1 5.82 1.12 2.56.12 3.38.15 9.9.15s7.34-.03 9.9-.15c2.55-.12 4.3-.53 5.82-1.12 1.58-.61 2.92-1.43 4.25-2.76 1.33-1.33 2.15-2.67 2.76-4.25.59-1.52 1-3.27 1.12-5.83.12-2.56.15-3.38.15-9.9s-.03-7.34-.15-9.9c-.12-2.56-.53-4.31-1.12-5.83-.61-1.58-1.43-2.92-2.76-4.25-1.33-1.33-2.67-2.15-4.25-2.76C38.2.68 36.45.27 33.9.15 31.34.03 30.52 0 24 0z" fill="url(#ig-gradient)"/><path d="M24 11.67c-6.8 0-12.33 5.53-12.33 12.33S17.2 36.33 24 36.33 36.33 30.8 36.33 24 30.8 11.67 24 11.67zm0 20.36c-4.41 0-8.03-3.62-8.03-8.03S19.59 15.97 24 15.97 32.03 19.59 32.03 24 28.41 32.03 24 32.03zM37.54 11.17c0 1.59-1.29 2.88-2.88 2.88-1.59 0-2.88-1.29-2.88-2.88 0-1.59 1.29-2.88 2.88-2.88 1.59 0 2.88 1.29 2.88 2.88z" fill="url(#ig-gradient)"/></svg>
+                    </a>
+                </div>
+                <a href="submit.html" class="link-btn featured den-special">🎵 ENTER THE DEN (SUBMIT & QUEUE)</a>
+                <a href="#collaboration" class="link-btn">Collaboration Opportunities</a>
+                <a href="#booking" class="link-btn">Booking & Inquiries</a>
+            </div>
+
+            <div id="music" class="page-section">
+                <h2 style="color: #fff; margin-bottom: 20px; text-align: center; font-size: 1.5rem;">Latest Releases</h2>
+                <a href="https://soundcloud.com/claytonwolfmusic/motion-original-mix" class="link-btn featured">Motion (Original Mix)</a>
+                <a href="https://soundcloud.com/claytonwolfmusic/the-anchor" class="link-btn">The Anchor</a>
+                <a href="https://soundcloud.com/claytonwolfmusic/fade-away" class="link-btn">Fade Away</a>
+                <a href="https://soundcloud.com/claytonwolfmusic/let-me-bleed-original-mix" class="link-btn">Let Me Bleed</a>
+                <a href="https://soundcloud.com/claytonwolfmusic/red-original-mix" class="link-btn">RED</a>
+                <a href="https://soundcloud.com/claytonwolfmusic" class="link-btn">View All Tracks →</a>
+            </div>
+
+            <div id="services" class="page-section">
+                <h2 style="color: #fff; margin-bottom: 20px; text-align: center; font-size: 1.5rem;">What I Offer</h2>
+                <a href="#dj-services" class="link-btn">DJ Services</a>
+                <a href="#production" class="link-btn">Music Production</a>
+                <a href="#collaboration" class="link-btn">Artist Collaboration</a>
+                <a href="#mixing" class="link-btn">Mixing & Mastering</a>
+                <a href="#lessons" class="link-btn">DJ/Production Lessons</a>
+            </div>
+
+            <div id="about" class="page-section">
+                <h2 style="color: #fff; margin-bottom: 20px; text-align: center; font-size: 1.5rem;">About Clayton Wolf</h2>
+                <div style="background: rgba(0, 0, 0, 0.6); border: 2px solid rgba(255, 255, 255, 0.3); border-radius: 15px; padding: 25px; color: #ddd; line-height: 1.8; margin-bottom: 20px;">
+                    <p style="margin-bottom: 15px;">Clayton Wolf is an American DJ and producer from the Northeast Ozarks, crafting dubstep, trance, and melodic techno that blend atmosphere, emotion, and drive.</p>
+                    <p>Based in the Ozarks, he continues to develop his craft and share his sound with audiences around the world.</p>
+                </div>
+                <a href="#contact" class="link-btn featured">Get In Touch</a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2026 Clayton Wolf - WolfPro Services LLC. All Rights Reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            if(window.event && window.event.target) { window.event.target.classList.add('active'); }
+        }
+    </script>
+</body>
+</html>
