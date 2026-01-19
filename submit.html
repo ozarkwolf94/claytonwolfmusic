@@ -26,30 +26,10 @@
 
         h1 { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 2.5rem; text-shadow: 0 0 25px rgba(220, 20, 60, 0.8); margin-bottom: 20px; }
 
-        .instruction-text { color: #aaa; font-size: 0.9rem; margin-bottom: 15px; letter-spacing: 1px; font-weight: 500; text-transform: uppercase; max-width: 600px; }
-
-        /* PRODUCT GRID */
-        .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; width: 100%; margin-bottom: 40px; }
-        .prod-item { display: flex; flex-direction: column; gap: 8px; }
-        
-        .prod-btn { text-decoration: none; padding: 20px 10px; border-radius: 12px; font-family: 'Orbitron'; font-weight: 900; transition: 0.3s; display: flex; flex-direction: column; gap: 4px; border: 2px solid transparent; backdrop-filter: blur(10px); }
-        .prod-btn .label { font-size: 0.65rem; letter-spacing: 1px; }
-        .prod-btn .price { font-size: 1.4rem; }
-        .prod-item .desc { font-family: 'Rajdhani'; font-weight: 500; font-size: 0.8rem; color: rgba(255,255,255,0.5); line-height: 1.3; margin-top: 5px; }
-
-        .btn-skip { background: rgba(255, 215, 0, 0.1); color: #FFD700; border-color: rgba(255, 215, 0, 0.3); }
-        .btn-skip:hover { background: #FFD700; color: #000; box-shadow: 0 0 20px #FFD700; }
-
-        .btn-break { background: rgba(0, 255, 255, 0.1); color: #00FFFF; border-color: rgba(0, 255, 255, 0.3); }
-        .btn-break:hover { background: #00FFFF; color: #000; box-shadow: 0 0 20px #00FFFF; }
-
-        .btn-hall { background: rgba(220, 20, 60, 0.1); color: #DC143C; border-color: rgba(220, 20, 60, 0.3); }
-        .btn-hall:hover { background: #DC143C; color: #fff; box-shadow: 0 0 20px #DC143C; }
-
-        @media (max-width: 650px) { .product-grid { grid-template-columns: 1fr; } }
+        .instruction-text { color: #aaa; font-size: 0.9rem; margin-bottom: 30px; letter-spacing: 1px; font-weight: 500; text-transform: uppercase; max-width: 600px; line-height: 1.4; }
 
         /* FORM PANEL */
-        .form-panel { background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 30px; width: 100%; margin-bottom: 30px; max-width: 650px; position: relative; }
+        .form-panel { background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 30px; width: 100%; margin-bottom: 40px; max-width: 650px; position: relative; }
         .free-tag { color: #00FF00; font-family: 'Orbitron'; font-size: 0.7rem; letter-spacing: 2px; margin-bottom: 12px; display: block; text-transform: uppercase; }
         
         input[type="text"], input[type="url"] { width: 100%; padding: 15px; margin-bottom: 15px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: white; font-family: 'Rajdhani'; font-size: 1.1rem; }
@@ -59,9 +39,40 @@
         .submit-btn { background: #DC143C; color: white; border: none; padding: 18px; width: 100%; border-radius: 10px; font-weight: 900; cursor: pointer; font-family: 'Orbitron'; letter-spacing: 2px; transition: 0.3s; text-transform: uppercase; }
         .submit-btn:disabled { background: #222; color: #444; cursor: not-allowed; }
 
+        /* PRODUCT GRID (RELOCATED UNDERNEATH) */
+        .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; width: 100%; margin-bottom: 40px; max-width: 650px; }
+        .prod-item { display: flex; flex-direction: column; gap: 8px; }
+        
+        .prod-btn { text-decoration: none; padding: 20px 10px; border-radius: 12px; font-family: 'Orbitron'; font-weight: 900; transition: 0.3s; display: flex; flex-direction: column; gap: 4px; border: 2px solid transparent; backdrop-filter: blur(10px); }
+        .prod-btn .label { font-size: 0.65rem; letter-spacing: 1px; }
+        .prod-btn .price { font-size: 1.4rem; }
+        .prod-item .desc { font-family: 'Rajdhani'; font-weight: 500; font-size: 0.8rem; color: rgba(255,255,255,0.5); line-height: 1.3; margin-top: 5px; }
+
+        /* SUBTLE GLOW ANIMATIONS */
+        .btn-skip { background: rgba(255, 215, 0, 0.1); color: #FFD700; border-color: rgba(255, 215, 0, 0.3); animation: glow-gold 3s infinite alternate; }
+        .btn-skip:hover { background: #FFD700; color: #000; box-shadow: 0 0 25px #FFD700; }
+
+        .btn-break { background: rgba(0, 255, 255, 0.1); color: #00FFFF; border-color: rgba(0, 255, 255, 0.3); animation: glow-cyan 3s infinite alternate; }
+        .btn-break:hover { background: #00FFFF; color: #000; box-shadow: 0 0 25px #00FFFF; }
+
+        .btn-hall { background: rgba(220, 20, 60, 0.1); color: #DC143C; border-color: rgba(220, 20, 60, 0.3); animation: glow-red 3s infinite alternate; }
+        .btn-hall:hover { background: #DC143C; color: #fff; box-shadow: 0 0 25px #DC143C; }
+
+        @keyframes glow-gold { from { box-shadow: 0 0 5px rgba(255, 215, 0, 0.2); } to { box-shadow: 0 0 15px rgba(255, 215, 0, 0.5); } }
+        @keyframes glow-cyan { from { box-shadow: 0 0 5px rgba(0, 255, 255, 0.2); } to { box-shadow: 0 0 15px rgba(0, 255, 255, 0.5); } }
+        @keyframes glow-red { from { box-shadow: 0 0 5px rgba(220, 20, 60, 0.2); } to { box-shadow: 0 0 15px rgba(220, 20, 60, 0.5); } }
+
+        @media (max-width: 650px) { .product-grid { grid-template-columns: 1fr; } }
+
         /* TIKTOK LINK */
         .tiktok-btn { display: flex; align-items: center; justify-content: center; gap: 12px; width: 80%; max-width: 400px; background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.6); text-decoration: none; padding: 12px; border-radius: 8px; font-family: 'Orbitron'; font-weight: 700; font-size: 0.8rem; margin-bottom: 40px; transition: 0.4s; }
         .tiktok-btn:hover { color: #fff; border-color: #fff; box-shadow: 2px 2px 0px #00f2ea, -2px -2px 0px #ff0050; }
+
+        /* MODAL */
+        #legal-modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); backdrop-filter: blur(10px); align-items: center; justify-content: center; padding: 20px; }
+        .modal-content { background: #111; border: 1px solid #DC143C; padding: 30px; border-radius: 20px; max-width: 450px; text-align: left; }
+        .modal-content h2 { font-family: 'Orbitron'; color: #DC143C; margin-bottom: 15px; font-size: 1.2rem; }
+        .modal-content p { color: #ddd; line-height: 1.5; font-size: 0.95rem; margin-bottom: 10px; }
 
         /* QUEUE */
         .queue-box { width: 100%; min-height: 500px; background: #000000; border-radius: 15px; padding: 40px 20px; border: 2px solid #DC143C; box-shadow: 0 0 25px rgba(220, 20, 60, 0.6); margin-bottom: 50px; max-width: 650px; }
@@ -78,6 +89,16 @@
 
     <audio id="success-sound" src="https://assets.mixkit.co/active_storage/sfx/2013/2013-preview.mp3" preload="auto"></audio>
 
+    <div id="legal-modal">
+        <div class="modal-content">
+            <h2>THE DEN TERMS</h2>
+            <p>1. By submitting, you grant Clayton Wolf the non-exclusive right to broadcast and react to your music live.</p>
+            <p>2. "Skips" and "Deep Dives" move you up the queue but do not guarantee a positive review. Real feedback only.</p>
+            <p>3. Payments are non-refundable once the track has been played or the service has been rendered.</p>
+            <button class="submit-btn" onclick="closeLegal()" style="margin-top:10px;">I AGREE</button>
+        </div>
+    </div>
+
     <div id="viewport">
         <div class="radial-mask"></div>
         <canvas id="bokeh-canvas"></canvas>
@@ -90,32 +111,6 @@
 
         <p class="instruction-text">For skips, deep dives, or permanent rotation, copy your receipt number before submitting your track!</p>
 
-        <div class="product-grid">
-            <div class="prod-item">
-                <a href="https://buy.stripe.com/00w9AS9sg0yg1BYanM4Vy00" target="_blank" class="prod-btn btn-skip">
-                    <span class="label">⚡ SKIP TO TOP</span>
-                    <span class="price">$5</span>
-                </a>
-                <p class="desc">Jump the wait. Go to the top of the paid queue.</p>
-            </div>
-
-            <div class="prod-item">
-                <a href="https://buy.stripe.com/8x2eVc6g4cgY3K61Rg4Vy01" target="_blank" class="prod-btn btn-break">
-                    <span class="label">🔍 DEEP REVIEW</span>
-                    <span class="price">$10</span>
-                </a>
-                <p class="desc">Immediate play + full technical review & breakdown.</p>
-            </div>
-
-            <div class="prod-item">
-                <a href="https://book.stripe.com/4gM5kC8ocbcUgwS67w4Vy02" target="_blank" class="prod-btn btn-hall">
-                    <span class="label">🏆 SKIP + HALL OF FAME</span>
-                    <span class="price">$25</span>
-                </a>
-                <p class="desc">Playlist, repost, IG story & permanent web feature.</p>
-            </div>
-        </div>
-
         <div class="form-panel">
             <span class="free-tag">Standard Submission: FREE</span>
             <form id="den-form">
@@ -126,11 +121,37 @@
                 
                 <div style="margin-bottom:20px; font-size: 0.85rem; color: #888;">
                     <input type="checkbox" id="agree" onchange="toggleBtn()">
-                    <label>I accept the Submission Terms</label>
+                    <label>I accept the <span style="color:#00FFFF; cursor:pointer; text-decoration:underline;" onclick="openLegal()">Terms of Use</span></label>
                 </div>
 
                 <button type="submit" id="sub-btn" class="submit-btn" disabled>SEND TO THE DEN</button>
             </form>
+        </div>
+
+        <div class="product-grid">
+            <div class="prod-item">
+                <a href="STRIPE_LINK_5" target="_blank" class="prod-btn btn-skip">
+                    <span class="label">⚡ SKIP TO TOP</span>
+                    <span class="price">$5</span>
+                </a>
+                <p class="desc">Jump the wait. Go to the top of the paid queue.</p>
+            </div>
+
+            <div class="prod-item">
+                <a href="STRIPE_LINK_10" target="_blank" class="prod-btn btn-break">
+                    <span class="label">🔍 DEEP REVIEW</span>
+                    <span class="price">$10</span>
+                </a>
+                <p class="desc">Immediate play + full technical breakdown.</p>
+            </div>
+
+            <div class="prod-item">
+                <a href="STRIPE_LINK_25" target="_blank" class="prod-btn btn-hall">
+                    <span class="label">🏆 SKIP + HALL OF FAME</span>
+                    <span class="price">$25</span>
+                </a>
+                <p class="desc">Playlist, repost, IG story & web feature.</p>
+            </div>
         </div>
 
         <a href="https://www.tiktok.com/@clayton_wolf_music" target="_blank" class="tiktok-btn">
@@ -150,6 +171,8 @@
     <script>
         const API = 'https://script.google.com/macros/s/AKfycbyULd_-cC4SoS8kkrhMU-wfSt0o-RMkIrmsTIOkFGKbWuwcu8oMNzbWr7M4q4D7JX1s/exec';
         
+        function openLegal() { document.getElementById('legal-modal').style.display = 'flex'; }
+        function closeLegal() { document.getElementById('legal-modal').style.display = 'none'; }
         function toggleBtn() { document.getElementById('sub-btn').disabled = !document.getElementById('agree').checked; }
 
         document.getElementById('den-form').addEventListener('submit', async (e) => {
@@ -189,7 +212,7 @@
                     active.map((i, index) => {
                         const isBoosted = i.Status && i.Status.includes("VERIFYING");
                         const statusColor = isBoosted ? "#FFD700" : "#00FFFF";
-                        return `<div class="queue-item"><div class="track-info"><span>#${index + 1}</span><div><strong style="color:${isBoosted ? '#FFD700' : '#fff'};">${i['Artist Name']}</strong><br><small style="color:#888;">${i['Track Title']}</small></div></div><div class="status-badge" style="border-color:${statusColor}; color:${statusColor};">${i['Status']}</div></div>`
+                        return `<div class="queue-item"><div class="track-info"><span style="color:#DC143C; margin-right:15px;">#${index + 1}</span><div><strong style="color:${isBoosted ? '#FFD700' : '#fff'};">${i['Artist Name']}</strong><br><small style="color:#888;">${i['Track Title']}</small></div></div><div class="status-badge" style="border-color:${statusColor}; color:${statusColor};">${i['Status']}</div></div>`
                     }).join('');
             } catch (err) {}
         }
