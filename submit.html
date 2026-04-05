@@ -130,24 +130,24 @@
 
         <div class="product-grid">
             <div class="prod-item">
-                <a href="STRIPE_LINK_5" target="_blank" class="prod-btn btn-skip">
-                    <span class="label">⚡ SKIP TO TOP</span>
+                <a href="#" id="pay-skip" target="_blank" rel="noopener noreferrer" class="prod-btn btn-skip">
+                    <span class="label">⚡ SKIP TO THE TOP</span>
                     <span class="price">$5</span>
                 </a>
                 <p class="desc">Jump the wait. Go to the top of the paid queue.</p>
             </div>
 
             <div class="prod-item">
-                <a href="STRIPE_LINK_10" target="_blank" class="prod-btn btn-break">
-                    <span class="label">🔍 DEEP REVIEW</span>
+                <a href="#" id="pay-deep" target="_blank" rel="noopener noreferrer" class="prod-btn btn-break">
+                    <span class="label">🔍 IMMEDIATE PLAY</span>
                     <span class="price">$10</span>
                 </a>
                 <p class="desc">Immediate play + full technical breakdown.</p>
             </div>
 
             <div class="prod-item">
-                <a href="STRIPE_LINK_25" target="_blank" class="prod-btn btn-hall">
-                    <span class="label">🏆 SKIP + HALL OF FAME</span>
+                <a href="#" id="pay-hall" target="_blank" rel="noopener noreferrer" class="prod-btn btn-hall">
+                    <span class="label">🏆 WOLF PACK OFFICIAL ROTATION</span>
                     <span class="price">$25</span>
                 </a>
                 <p class="desc">Playlist, repost, IG story & web feature.</p>
@@ -170,6 +170,26 @@
 
     <script>
         const API = 'https://script.google.com/macros/s/AKfycbyULd_-cC4SoS8kkrhMU-wfSt0o-RMkIrmsTIOkFGKbWuwcu8oMNzbWr7M4q4D7JX1s/exec';
+
+        // Stripe Payment Links (Dashboard → Payment Links). Queue sheet: https://docs.google.com/spreadsheets/d/1MKq3yrtvmA5woHKB7T0oMMSlMZXReIvcpmW_zBNV4SI/edit
+        const PAYMENT_LINKS = {
+            skipToTop: 'https://buy.stripe.com/00w9AS9sg0yg1BYanM4Vy00',
+            deepReview: 'https://buy.stripe.com/8x2eVc6g4cgY3K61Rg4Vy01',
+            hallOfFame: 'https://book.stripe.com/4gM5kC8ocbcUgwS67w4Vy02'
+        };
+
+        (function applyPaymentLinks() {
+            var pairs = [
+                ['pay-skip', PAYMENT_LINKS.skipToTop],
+                ['pay-deep', PAYMENT_LINKS.deepReview],
+                ['pay-hall', PAYMENT_LINKS.hallOfFame]
+            ];
+            pairs.forEach(function (p) {
+                var el = document.getElementById(p[0]);
+                var url = (p[1] || '').trim();
+                if (el && url.indexOf('http') === 0) el.href = url;
+            });
+        })();
         
         function openLegal() { document.getElementById('legal-modal').style.display = 'flex'; }
         function closeLegal() { document.getElementById('legal-modal').style.display = 'none'; }
