@@ -83,6 +83,12 @@
         #queue-list { display: flex; flex-direction: column; gap: 5px; text-align: left; }
         .queue-item { display: flex; justify-content: space-between; align-items: center; padding: 18px; border-bottom: 1px solid rgba(220, 20, 60, 0.1); }
         .status-badge { color: #00FFFF; font-weight: 900; font-size: 0.7rem; border: 1px solid #00FFFF; padding: 4px 8px; border-radius: 4px; }
+
+        .queue-toolbar { width: 100%; max-width: 650px; display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 10px; margin-bottom: 14px; }
+        .queue-toolbar a, .queue-toolbar button {
+            background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(220, 20, 60, 0.35); color: #ccc; font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; padding: 8px 14px; border-radius: 8px; cursor: pointer; text-decoration: none; transition: 0.25s;
+        }
+        .queue-toolbar a:hover, .queue-toolbar button:hover { border-color: #DC143C; color: #fff; }
     </style>
 </head>
 <body>
@@ -158,6 +164,10 @@
             JOIN THE LIVE STREAM
         </a>
 
+        <div class="queue-toolbar">
+            <a href="queue.html" target="_blank" rel="noopener noreferrer">Queue only (new tab)</a>
+            <button type="button" id="btn-queue-popout" title="Opens the live queue in a smaller window">Pop out queue</button>
+        </div>
         <div class="queue-box">
             <div class="queue-title"><span class="live-dot"></span> LIVE QUEUE</div>
             <div id="queue-list">Scanning the den...</div>
@@ -249,6 +259,13 @@
             update() { this.x += this.vx; this.y += this.vy; if (this.x > canvas.width + 100) this.x = -100; if (this.y > canvas.height + 100) this.y = -100; }
         }
         function animate() { ctx.clearRect(0, 0, canvas.width, canvas.height); if (particles.length < 40) for(let i=0; i<40; i++) particles.push(new Particle()); particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animate); }
+        document.getElementById('btn-queue-popout').addEventListener('click', function () {
+            var w = 480, h = 780;
+            var y = window.top.outerHeight / 2 + window.top.screenY - (h / 2);
+            var x = window.top.outerWidth / 2 + window.top.screenX - (w / 2);
+            window.open('queue.html', 'DenLiveQueue', 'width=' + w + ',height=' + h + ',left=' + x + ',top=' + y + ',scrollbars=yes,resizable=yes');
+        });
+
         setInterval(loadQueue, 10000); loadQueue(); animate();
     </script>
 </body>
